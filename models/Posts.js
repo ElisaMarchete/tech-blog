@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../config/connection.js");
+const sequelize = require("../config/connection");
 
 class Posts extends Model {}
 
@@ -17,6 +17,10 @@ Posts.init(
     },
     post_date: {
       type: DataTypes.DATE,
+      allowNull: false,
+    },
+    title: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
     post_text: {

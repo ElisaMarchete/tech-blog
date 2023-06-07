@@ -1,0 +1,10 @@
+<!-- Loop over each user object -->
+<section class="posts-box">
+  {{#each allPosts as |posts|}}
+    <h2 class="posts-title">{{posts.title}}</h2>
+    {{posts.post_date}}
+    {{posts.name}}
+    {{posts.post_text}}
+
+  {{/each}}
+</section>

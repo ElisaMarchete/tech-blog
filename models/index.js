@@ -5,6 +5,4 @@ const Posts = require("./Posts");
 //     foreignKey: "category_id",
 //   });
 
-module.exports = {
-  Posts,
-};
+module.exports = { Posts };
