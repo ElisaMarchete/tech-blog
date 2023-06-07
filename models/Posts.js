@@ -1,4 +1,5 @@
 const { Model, DataTypes } = require("sequelize");
+const moment = require("moment");
 const sequelize = require("../config/connection");
 
 class Posts extends Model {}
@@ -16,8 +17,9 @@ Posts.init(
       allowNull: false,
     },
     post_date: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       allowNull: false,
+      defaultValue: moment().format("DD/MM/YY"),
     },
     title: {
       type: DataTypes.STRING,

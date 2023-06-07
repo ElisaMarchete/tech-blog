@@ -1,10 +1,16 @@
-<!-- Loop over each user object -->
+<!-- Loop over each post object -->
 <section class="posts-box">
   {{#each allPosts as |posts|}}
-    <h2 class="posts-title">{{posts.title}}</h2>
-    {{posts.post_date}}
-    {{posts.name}}
-    {{posts.post_text}}
+    <section class="posts-header">
+      <h4 class="posts-title">{{posts.title}}</h4>
+      <p class="posts-data-name">Posted by
+        {{posts.name}}
+        on
+        {{posts.post_date}}</p>
+    </section>
+    <section class="posts-body">
+      <p class="posts-text">{{posts.post_text}}</p>
+    </section>
 
   {{/each}}
 </section>
