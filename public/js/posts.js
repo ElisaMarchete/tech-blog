@@ -1,6 +1,6 @@
 const box = document.querySelector("#comment-box");
 const postsBoxes = document.querySelectorAll(".posts-box");
-// console.log(postsBoxes);
+const btnAddComment = document.querySelector("#btn-add-comment");
 
 // for each to add listener click to each post
 postsBoxes.forEach((post) => {
@@ -20,8 +20,31 @@ postsBoxes.forEach((post) => {
 
     // add the post id to the comment id
     box.setAttribute("comment-post-id", getPostId);
-    console.log(box);
+    // console.log(box);
   });
+});
+
+// add event listener to the add comment button
+btnAddComment.addEventListener("click", function (e) {
+  // get the post id from the comment box
+  const postId = box.getAttribute("comment-post-id");
+  console.log(postId);
+
+  // get the comment text from the comment box
+  let commentText = document.querySelector(".text-box").value;
+  console.log(commentText);
+
+  // send the post id and comment text to the server
+  // fetch("/api/comments", {
+  //   method: "POST",
+  //   body: JSON.stringify({
+  //     post_id: postId,
+  //     comment_text: commentText,
+  //   }),
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  // });
 });
 
 // hide the other posts
