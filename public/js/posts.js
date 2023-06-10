@@ -2,7 +2,8 @@ const box = document.querySelector("#comment-box");
 const postsBoxes = document.querySelectorAll(".posts-box");
 const btnAddComment = document.querySelector("#btn-add-comment");
 
-// for each to add listener click to each post
+// check if user is logged in
+
 postsBoxes.forEach((post) => {
   post.addEventListener("click", function (e) {
     // display the comment box when the post is clicked
@@ -28,23 +29,39 @@ postsBoxes.forEach((post) => {
 btnAddComment.addEventListener("click", function (e) {
   // get the post id from the comment box
   const postId = box.getAttribute("comment-post-id");
-  console.log(postId);
 
   // get the comment text from the comment box
   let commentText = document.querySelector(".text-box").value;
-  console.log(commentText);
 
   // send the post id and comment text to the server
-  // fetch("/api/comments", {
-  //   method: "POST",
-  //   body: JSON.stringify({
-  //     post_id: postId,
-  //     comment_text: commentText,
-  //   }),
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  // });
+  fetch("/api/comments", {
+    method: "POST",
+    body: JSON.stringify({
+      post_id: parseInt(postId),
+      comment_text: commentText,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not OK");
+      }
+      return response.json(); // Parse the response body as JSON
+    })
+    .then((data) => {
+      // Here, 'data' contains the parsed response data
+      // console.log(data);
+      // display the comments on the page after the comment is added
+      fetch("/api/comments/" + id, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }).catch((error) => {
+        // Handle any errors that occurred during the request
+        console.error("Error:", error);
+      });
+    });
 });
-
-// hide the other posts

@@ -42,4 +42,23 @@ router.get("/signup", (req, res) => {
   res.render("signup");
 });
 
+// http://localhost:3001/post/1
+router.put("/:id", async (req, res) => {
+  try {
+    const postData = await Posts.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (!postData) {
+      res.status(404).json({ message: "No post found!" });
+      return;
+    }
+
+    res.status(200).json(postData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
