@@ -5,7 +5,7 @@ const { Posts } = require("../models");
 router.get("/", async (req, res) => {
   try {
     const postData = await Posts.findAll({
-      attributes: ["name", "post_date", "title", "post_text"],
+      attributes: ["name", "post_date", "title", "post_text", "id"],
       order: [["post_date", "DESC"]],
     });
     const allPosts = postData.map((post) => post.get({ plain: true }));

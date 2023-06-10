@@ -1,6 +1,6 @@
 <!-- Loop over each post object -->
-<section class="posts-box">
-  {{#each allPosts as |posts|}}
+{{#each allPosts as |posts|}}
+  <section class="posts-box" id="posts-{{posts.id}}">
     <section class="posts-header">
       <h4 class="posts-title">{{posts.title}}</h4>
       <p class="posts-data-name">Posted by
@@ -12,5 +12,16 @@
       <p class="posts-text">{{posts.post_text}}</p>
     </section>
 
-  {{/each}}
+  </section>
+{{/each}}
+
+<section class="comment-box" id="comment-box" style="display: none;">
+  <div class="">
+    <textarea class="" placeholder="Note Text"></textarea>
+  </div>
+  <div class="">
+    <button class="btn btn-primary" type="button" name="button">Add Comment</button>
+  </div>
 </section>
+
+<script src="./js/posts.js"></script>

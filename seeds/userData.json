@@ -3,5 +3,10 @@
     "name": "Elisa",
     "title": "Do I like handlebars?",
     "post_text": "I have mixed feelings about handlebars."
+  },
+  {
+    "name": "Elisa2",
+    "title": "test",
+    "post_text": "test."
   }
 ]

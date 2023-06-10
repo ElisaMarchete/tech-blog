@@ -1,9 +1,10 @@
 const Posts = require("./Posts");
 const User = require("./User");
+const Comments = require("./Comments.js");
 
-// Products belongsTo Category
-// Product.belongsTo(Category, {
-//     foreignKey: "category_id",
-//   });
+// Comment belongsTo Post
+// Comments.belongsTo(Posts, {
+//   foreignKey: "post_id",
+// });
 
-module.exports = { Posts, User };
+module.exports = { Posts, User, Comments };

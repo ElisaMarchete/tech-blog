@@ -72,7 +72,7 @@ nav a:hover {
   border: 2px solid var(--secondary);
   border-radius: var(--border-radius);
   width: 70%;
-  height: 100px;
+  /* height: 20%; */
   margin: 10px;
 }
 
