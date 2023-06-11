@@ -1,21 +1,21 @@
 const router = require("express").Router();
-const { Comments } = require("../../models");
+const { Posts } = require("../../models");
 
-// CREATE new comment
-// http://localhost:3001/api/comments
+// CREATE new post
+// http://localhost:3001/api/dashboard
 router.post("/", async (req, res) => {
   try {
-    const dbUserData = await Comments.create({
-      comment_text: req.body.comment_text,
+    const newpostData = await Posts.create({
+      title: req.body.title,
       name: "bbb",
-      comments_posts_id: req.body.post_id,
+      post_text: req.body.post_text,
     });
 
     // Set up sessions with a 'loggedIn' variable set to `true`
     req.session.save(() => {
       req.session.loggedIn = true;
 
-      res.status(200).json(dbUserData);
+      res.status(200).json(newpostData);
     });
   } catch (err) {
     console.log(err);
