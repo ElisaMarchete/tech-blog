@@ -16,18 +16,20 @@
 {{/each}}
 
 <!-- only loged users can add comments -->
-<section class="comment-box" id="comment-box" style="display: none;">
-  <div class="comment">
-    <textarea class="text-box" placeholder="Add your comment"></textarea>
-  </div>
-  <div class="btn-comment">
-    <button
-      class="btn btn-primary"
-      id="btn-add-comment"
-      type="button"
-      name="button"
-    >Add Comment</button>
-  </div>
-</section>
+{{#if loggedIn}}
+  <section class="comment-box" id="comment-box" style="display: none;">
+    <div class="comment">
+      <textarea class="text-box" placeholder="Add your comment"></textarea>
+    </div>
+    <div class="btn-comment">
+      <button
+        class="btn btn-primary"
+        id="btn-add-comment"
+        type="button"
+        name="button"
+      >Add Comment</button>
+    </div>
+  </section>
+{{/if}}
 
 <script src="./js/posts.js"></script>

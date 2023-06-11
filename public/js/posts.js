@@ -51,17 +51,7 @@ btnAddComment.addEventListener("click", function (e) {
       return response.json(); // Parse the response body as JSON
     })
     .then((data) => {
+      console.log(data);
       // Here, 'data' contains the parsed response data
-      // console.log(data);
-      // display the comments on the page after the comment is added
-      fetch("/api/comments/" + id, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }).catch((error) => {
-        // Handle any errors that occurred during the request
-        console.error("Error:", error);
-      });
     });
 });

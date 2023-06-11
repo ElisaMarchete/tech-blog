@@ -25,7 +25,7 @@ router.post("/", async (req, res) => {
 
 // CREATE new comment
 // http://localhost:3001/api/comments/:id
-// router.get(`/${postCommentId}`, async (req, res) => {
+// router.get(`/${}`, async (req, res) => {
 //   try {
 //     const dbUserData = await Comments.findByPk({
 //       post_text: req.body.comment_text,
