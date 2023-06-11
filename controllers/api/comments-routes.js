@@ -6,7 +6,7 @@ const { Comments } = require("../../models");
 router.post("/", async (req, res) => {
   try {
     const dbUserData = await Comments.create({
-      post_text: req.body.comment_text,
+      comment_text: req.body.comment_text,
       name: "bbb",
       comments_posts_id: req.body.post_id,
     });

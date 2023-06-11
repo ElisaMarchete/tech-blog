@@ -21,7 +21,7 @@ Comments.init(
       allowNull: false,
       defaultValue: moment().format("DD/MM/YY"),
     },
-    post_text: {
+    comment_text: {
       type: DataTypes.STRING,
       allowNull: false,
     },
