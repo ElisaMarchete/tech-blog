@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const withAuth = require("../utils/auth");
 const { Posts, User } = require("../models");
 
 // http://localhost:3001/
@@ -45,14 +46,26 @@ router.get("/signup", (req, res) => {
 });
 
 // http://localhost:3001/api/dashboard
-router.get("/dashboard", (req, res) => {
-  // If the user is not logged in, redirect to the homepage
-  if (!req.session.loggedIn) {
-    res.redirect("/");
-    return;
+router.get("/dashboard", withAuth, async (req, res) => {
+  try {
+    const userId = req.session.user_id;
+    console.log(req.session.user_id);
+
+    const postData = await Posts.findAll({
+      where: { user_posts_id: userId },
+      // where: { user_id: userId }, // Fetch only posts created by the logged-in user
+      attributes: ["user_posts_id", "post_date", "title", "post_text", "id"],
+      order: [["post_date", "DESC"]],
+      include: [{ model: User }],
+    });
+
+    const userPosts = postData.map((post) => post.get({ plain: true }));
+
+    res.render("dashboard", { userPosts, loggedIn: req.session.loggedIn });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
   }
-  // Otherwise, render the 'dashboard' template
-  res.render("dashboard");
 });
 
 module.exports = router;

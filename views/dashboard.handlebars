@@ -1,33 +1,53 @@
-<!-- only loged users can add a new post -->
-<div class="btn-comment">
-  <button
-    class="btn btn-primary"
-    id="btn-new-post"
-    type="button"
-    name="button"
-  >+ New Post</button>
-</div>
+<!-- Loop over each post object only posts created bv the user -->
+{{! userPosts from homeRoutes.Js get("/") }}
+{{#if loggedIn}}
+  {{#each userPosts as |userposts|}}
+    <section class="posts-box" id="posts-{{userposts.id}}">
+      <section class="posts-header">
+        <h4 class="posts-title">{{userposts.title}}</h4>
+        <p class="posts-data-name">Posted by:
+          {{userposts.user.username}}
+          on
+          {{userposts.post_date}}</p>
+      </section>
+      <section class="posts-body">
+        <p class="posts-text">{{userposts.post_text}}</p>
+      </section>
 
-<section class="post-new-box" id="create-new-post" style="display: none;">
-  <section class="post-new-header">Create New Post</section>
-  <section class="posts-new-body">
-    <input
-      class="posts-new-title"
-      type="text"
-      id="posts-new-title"
-      placeholder="Title"
-    />
-    <input class="new-body" type="text" id="new-body" placeholder="Content" />
+    </section>
+  {{/each}}
 
-    <div class="btn-new-post">
-      <button
-        class="btn btn-primary"
-        id="btn-add-new-post"
-        type="button"
-        name="button"
-      >Create</button>
-    </div>
+  <!-- only loged users can add comments -->
+  <div class="btn-comment">
+    <button
+      class="btn btn-primary"
+      id="btn-new-post"
+      type="button"
+      name="button"
+    >+ New Post</button>
+  </div>
+
+  <section class="post-new-box" id="create-new-post" style="display: none;">
+    <section class="post-new-header">Create New Post</section>
+    <section class="posts-new-body">
+      <input
+        class="posts-new-title"
+        type="text"
+        id="posts-new-title"
+        placeholder="Title"
+      />
+      <input class="new-body" type="text" id="new-body" placeholder="Content" />
+
+      <div class="btn-new-post">
+        <button
+          class="btn btn-primary"
+          id="btn-add-new-post"
+          type="button"
+          name="button"
+        >Create</button>
+      </div>
+    </section>
   </section>
-</section>
 
+{{/if}}
 <script src="./js/dashboard.js"></script>

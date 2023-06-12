@@ -1,10 +1,9 @@
 const withAuth = (req, res, next) => {
-  // If the user is not logged in, redirect the user to the login page
-  // This is directly from the `/gallery/:id` and `/painting/:id` routes
+  // If the user is not logged in, redirect the user to the home page
   if (!req.session.loggedIn) {
-    res.redirect("/login");
+    res.redirect("/");
   } else {
-    // If the user is logged in, execute the route function that will allow them to view the gallery
+    // If the user is logged in, execute the route function that will allow them to view the content
     // We call next() if the user is authenticated
     next();
   }
