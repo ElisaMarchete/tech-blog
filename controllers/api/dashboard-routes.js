@@ -4,10 +4,11 @@ const { Posts } = require("../../models");
 // CREATE new post
 // http://localhost:3001/api/dashboard
 router.post("/", async (req, res) => {
+  console.log(req.body.title, req.session.user_id, req.body.post_text);
   try {
     const newpostData = await Posts.create({
       title: req.body.title,
-      name: "bbb",
+      user_posts_id: req.session.user_id,
       post_text: req.body.post_text,
     });
 

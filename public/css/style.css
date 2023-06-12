@@ -64,10 +64,8 @@ nav a:hover {
   padding: 10px;
   display: flex;
   flex-direction: column;
-  /* flex-direction: column;
-  justify-content: center;
-  align-items: center; */
-  /* margin-top: 50px; */
+  overflow-y: auto;
+
 }
 
 .posts-box {
@@ -196,12 +194,12 @@ textarea {
   display: flex;
   flex-direction: column;
   /* padding: 10px; */
-  font-size: 18px;
+  font-size: 15px;
 }
 
 .posts-new-title {
   display: flex;
-  font-size: 18px;
+  font-size: 15px;
 }
 
 .posts-new-title {
@@ -211,4 +209,11 @@ textarea {
 .new-body {
   height: 100px;
   margin: 5px;
+
+}
+
+.btn-new-post {
+  margin: 5px;
+  display: flex;
+  justify-content: center;
 }

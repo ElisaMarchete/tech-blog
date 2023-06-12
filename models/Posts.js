@@ -12,10 +12,6 @@ Posts.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     post_date: {
       type: DataTypes.DATEONLY,
       allowNull: false,
@@ -28,6 +24,13 @@ Posts.init(
     post_text: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    user_posts_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "user",
+        key: "id",
+      },
     },
   },
   {

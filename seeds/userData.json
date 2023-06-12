@@ -1,12 +1,12 @@
 [
   {
-    "name": "Elisa",
     "title": "Do I like handlebars?",
-    "post_text": "I have mixed feelings about handlebars."
+    "post_text": "I have mixed feelings about handlebars.",
+    "user_posts_id": 1
   },
   {
-    "name": "Elisa2",
     "title": "test",
-    "post_text": "test."
+    "post_text": "test.",
+    "user_posts_id": 1
   }
 ]

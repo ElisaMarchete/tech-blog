@@ -1,10 +1,11 @@
 <!-- Loop over each post object -->
+{{!-- allPosts from homeRoutes.Js get("/") --}}
 {{#each allPosts as |posts|}}
   <section class="posts-box" id="posts-{{posts.id}}">
     <section class="posts-header">
       <h4 class="posts-title">{{posts.title}}</h4>
-      <p class="posts-data-name">Posted by
-        {{posts.name}}
+      <p class="posts-data-name">Posted by: {{posts.user.username}}</p>
+  
         on
         {{posts.post_date}}</p>
     </section>
