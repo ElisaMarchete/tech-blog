@@ -44,28 +44,44 @@ btnsubmitpost.addEventListener("click", function () {
     });
 });
 
-// postbox.forEach((editpost) => {
-//   editpost.addEventListener("click", function (e) {
-//     // show and hide the buttons
-//     btnnewpost.style.display = "none";
+postbox.forEach((editpost) => {
+  editpost.addEventListener("click", function (e) {
+    // show and hide the buttons
+    btneditpost.style.display = "flex";
+    btndeletepost.style.display = "flex";
+    btnnewpost.style.display = "none";
+    //split the post id information to get the id number
+    getPostId = editpost.id.split("-")[1];
+    console.log(getPostId);
 
-//     //split the post id information to get the id number
-//     // getPostId = editpost.id.split("-")[1];
-//     // console.log(getPostId);
-//   });
-// });
+    // hide the other posts when one is clicked
+    // postbox.forEach((editpost) => {
+    //   if (editpost.id.split("-")[1] !== getPostId) {
+    //     editpost.style = "display: none";
+    //   }
+    // });
+
+    // add the post id to the comment id
+    // commentBox.setAttribute("comment-post-id", getPostId);
+    // console.log(box);
+  });
+});
 
 // add event listener to the add edit button
 btneditpost.addEventListener("click", function (e) {
+  // get the post id from the comment box
+  // const postId = commentBox.getAttribute("comment-post-id");
+  // console.log(postId);
+
   // get the comment text from the comment box
-  // let editPostTitle = document.querySelector(".posts-title").value;
-  // let editPostText = document.querySelector(".posts-text").value;
+  let editPostTitle = document.querySelector(".posts-title").value;
+  let editPostText = document.querySelector(".posts-text").value;
 
   // send the post id and comment text to the server
   fetch(`/api/dashboard/:${getPostId}`, {
     method: "PUT",
     body: JSON.stringify({
-      post_id: parseInt(getPostId),
+      post_id: parseInt(getPostId), // FIX POST ID
       title: editPostTitle,
       post_text: editPostText,
     }),
@@ -82,5 +98,21 @@ btneditpost.addEventListener("click", function (e) {
     // Here, 'data' contains the parsed response data
     .then((data) => {
       console.log(data);
+      // hide the comment box to display only the new comment
+      // commentBox.style = "display: none";
+
+      // display the author name and comment text and date
+      // displayComment.innerHTML = `
+      // <div class="newCommentDisplay">
+      //       <div class="comment-text">
+      //       <p>${data.comment_text}</p>
+      //      </div>
+      //       <div class="comment-author-date">
+      //       <p>--- ${data.name}  ${data.comment_date}</p>
+      //       </div>
+      //    </div>
+      // </div>
+      // </div>
+      // `;
     });
 });

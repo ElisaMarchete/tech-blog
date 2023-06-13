@@ -13,11 +13,30 @@
       <section class="posts-body">
         <p class="posts-text">{{userposts.post_text}}</p>
       </section>
-
+      <section class="posts-footer">
+        <div class="btn-comment">
+          <button
+            class="btn btn-primary"
+            id="btn-edit-post"
+            type="button"
+            name="button"
+            data-id="{{userposts.id}}"
+          >Edit</button>
+        </div>
+        <div class="btn-comment">
+          <button
+            class="btn btn-primary"
+            id="btn-delete-post"
+            type="button"
+            name="button"
+            data-id="{{userposts.id}}"
+          >Delete</button>
+        </div>
+      </section>
     </section>
   {{/each}}
 
-  <!-- only loged users can add comments -->
+  <!-- only loged users can add posts -->
   <div class="btn-comment">
     <button
       class="btn btn-primary"
@@ -47,6 +66,25 @@
         >Create</button>
       </div>
     </section>
+  </section>
+
+{{/if}}
+
+<!-- only loged users can update posts style="display: none;"-->
+{{#if loggedIn}}
+  <section class="comment-box" id="update-box" style="display: none;">
+    <div class="update">
+      <textarea class="text-box" placeholder={{userposts.title}}></textarea>
+      <textarea class="text-box" placeholder={{userposts.post_text}}></textarea>
+    </div>
+    <div class="btn-comment">
+      <button
+        class="btn btn-primary"
+        id="btn-update-post"
+        type="button"
+        name="button"
+      >Update</button>
+    </div>
   </section>
 
 {{/if}}

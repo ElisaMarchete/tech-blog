@@ -27,7 +27,7 @@ router.post("/", async (req, res) => {
 
 // Get the posts created by the logged in user
 // http://localhost:3001/api/dashboard
-router.get("/dashboard", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const userId = req.session.userId;
 
@@ -41,6 +41,29 @@ router.get("/dashboard", async (req, res) => {
     const userPosts = postData.map((post) => post.get({ plain: true }));
 
     res.render("dashboard", { userPosts, loggedIn: true });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// Update a post when the user clicks on the edit button
+// http://localhost:3001/api/dashboard/:id
+router.put("/:id", async (req, res) => {
+  try {
+    const updatePost = await Posts.update(
+      {
+        title: req.body.title,
+        post_text: req.body.post_text,
+      },
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+    );
+
+    res.status(200).json(updatePost);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

@@ -73,7 +73,7 @@ nav a:hover {
   border-radius: var(--border-radius);
   justify-content: center;
   width: 70%;
-  height: 100px;
+  height: 135px;
   margin: 10px;
 }
 
@@ -133,7 +133,6 @@ nav a:hover {
   text-decoration: none;
   font-size: 100%;
   transition: color 0.1s;
-  margin-left: 10px;
 }
 
 .comment-box {
@@ -211,8 +210,17 @@ textarea {
 
 }
 
-.btn-new-post {
+.posts-footer {
+  display: flex;
+  flex-direction: row;
+}
+
+#btn-edit-post,
+#btn-delete-post {
+
   margin: 5px;
   display: flex;
-  justify-content: center;
+  /* height: 20px;
+  width: 20px; */
+
 }
