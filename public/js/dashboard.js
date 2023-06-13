@@ -28,6 +28,8 @@ btnsubmitpost.addEventListener("click", function () {
       if (!response.ok) {
         throw new Error("Network response was not OK");
       }
+      // go back to the dashboard page
+      window.location.replace("/dashboard");
       return response.json(); // Parse the response body as JSON
     })
     // Here, 'data' contains the parsed response data
