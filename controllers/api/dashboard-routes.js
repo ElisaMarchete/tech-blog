@@ -26,20 +26,20 @@ router.post("/", async (req, res) => {
 
 // Get the posts created by the logged in user
 // http://localhost:3001/api/dashboard
-router.get("/:userId", async (req, res) => {
+router.get("/dashboard", async (req, res) => {
   try {
-    const userId = req.session.user_id;
-    const postbyUser = await Posts.findByPk(userId, {
-      attributes: ["user_posts_id", "post_date", "title", "post_text", "id"],
+    const userId = req.session.userId;
+
+    const postData = await Posts.findAll({
+      where: { user_id: userId }, // Fetch only posts created by the logged-in user
+      attributes: ["user_posts_id", "title", "post_text", "id"], // "post_date"
       order: [["post_date", "DESC"]],
       include: [{ model: User }],
     });
-    // console.log(postData);
-    const allPosts = postbyUser.map((post) => post.get({ plain: true }));
-    //post.get({ plain: true }) will contain plain JavaScript objects representing each post, instead of Sequelize model instances.
-    // console.log({ allPosts });
 
-    res.render("homepage", { allPosts, loggedIn: req.session.loggedIn }); // loggedIn will be used to determine whether or not to display the login/logout links in the header
+    const userPosts = postData.map((post) => post.get({ plain: true }));
+
+    res.render("dashboard", { userPosts, loggedIn: true });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

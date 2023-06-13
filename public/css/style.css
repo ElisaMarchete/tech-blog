@@ -65,7 +65,7 @@ nav a:hover {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-
+  align-items: center;
 }
 
 .posts-box {

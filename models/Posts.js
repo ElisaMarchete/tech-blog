@@ -12,11 +12,11 @@ Posts.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    post_date: {
-      type: DataTypes.DATEONLY,
-      allowNull: false,
-      defaultValue: moment().format("DD/MM/YY"),
-    },
+    // post_date: {
+    //   type: DataTypes.DATEONLY,
+    //   allowNull: false,
+    //   defaultValue: moment().format("DD/MM/YY"),
+    // },
     title: {
       type: DataTypes.STRING,
       allowNull: false,
