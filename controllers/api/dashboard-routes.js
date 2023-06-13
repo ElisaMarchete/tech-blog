@@ -7,6 +7,7 @@ router.post("/", async (req, res) => {
   // console.log(req.body.title, req.session.user_id, req.body.post_text);
   try {
     const newpostData = await Posts.create({
+      post_date: req.body.post_date,
       title: req.body.title,
       user_posts_id: req.session.user_id,
       post_text: req.body.post_text,
@@ -32,7 +33,7 @@ router.get("/dashboard", async (req, res) => {
 
     const postData = await Posts.findAll({
       where: { user_id: userId }, // Fetch only posts created by the logged-in user
-      attributes: ["user_posts_id", "title", "post_text", "id"], // "post_date"
+      attributes: ["post_date", "user_posts_id", "title", "post_text", "id"], // "post_date"
       order: [["post_date", "DESC"]],
       include: [{ model: User }],
     });

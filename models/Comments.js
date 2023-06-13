@@ -17,9 +17,9 @@ Comments.init(
       allowNull: false,
     },
     comment_date: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: moment().format("DD/MM/YY"),
+      defaultValue: DataTypes.NOW,
     },
     comment_text: {
       type: DataTypes.STRING,
@@ -35,6 +35,7 @@ Comments.init(
   },
   {
     sequelize,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
     modelName: "comments",
