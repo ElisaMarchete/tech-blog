@@ -49,14 +49,19 @@ btnsubmitpost.addEventListener("click", function () {
 btneditpost.forEach((edit) => {
   edit.addEventListener("click", function (e) {
     const id = e.target.dataset.id;
+    // Get the post id
+    editField.value = id;
     // show the form to edit the post
     updatepostForm.style.display = "flex";
-    editField.value = id;
-    // postsBoxes.forEach((post) => {
-    //   //split the post id information to get the id number
-    //   getPostId = post.id.split("-")[1];
-    //   console.log(getPostId);
-    // });
+
+    // hide the other posts when one is clicked
+    postsBoxes.forEach((post) => {
+      if (post.id.split("-")[1] !== id) {
+        post.style = "display: none";
+      }
+    });
+    // hide new post button
+    btnnewpost.style.display = "none";
   });
 });
 
@@ -67,6 +72,7 @@ btnupdatepost.addEventListener("click", async function (e) {
   const post_text = document.querySelector(".edit-body").value;
   const id = editField.value;
   console.log(title, post_text, id);
+
   // send the data to the database using fetch
   const result = await fetch("/api/dashboard/", {
     method: "PUT",

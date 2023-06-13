@@ -36,7 +36,7 @@
     </section>
   {{/each}}
 
-  <!-- only loged users can add posts -->
+  <!--ADD A NEW POST -->
   <div class="btn-comment">
     <button
       class="btn btn-primary"
@@ -70,12 +70,12 @@
 
 {{/if}}
 
-<!-- only loged users can update posts -->
+<!-- UPDATE POSTS -->
 {{#if loggedIn}}
   {{!-- <section class="comment-box" id="update-box"> --}}
     <div class="update" id="update" style="display: none;">
-      <textarea class="edit-title" placeholder=></textarea>
-      <textarea class="edit-body" placeholder=></textarea>
+      <textarea class="edit-title" placeholder="Edit the Title"></textarea>
+      <textarea class="edit-body" placeholder="Edit the Content"></textarea>
       <input type="text" id="edit" style="display: none;">
     
      <div class="btn-comment">

@@ -224,3 +224,11 @@ textarea {
   width: 20px; */
 
 }
+
+#update {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: 72%;
+
+}
