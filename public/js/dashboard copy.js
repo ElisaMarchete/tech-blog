@@ -116,3 +116,68 @@ btneditpost.addEventListener("click", function (e) {
       // `;
     });
 });
+
+// btnupdatepost.addEventListener("click", function (getPostId) {
+//   // get the post title and post text from the form
+//   const editPostTitle = document.querySelector(".edit-title").value;
+//   const editPostText = document.querySelector(".edit-body").value;
+//   // send the post id and comment text to the server
+//   fetch("/api/dashboard/", {
+//     method: "PUT",
+//     body: JSON.stringify({
+//       post_id: parseInt(postId),
+//       title: editPostTitle,
+//       post_text: editPostText,
+//     }),
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   })
+//     .then(
+//       (response) => {
+//         if (!response.ok) {
+//           throw new Error("Network response was not OK");
+//         }
+//         // go back to the dashboard page
+//         window.location.replace("/dashboard");
+//         return response.json(); // Parse the response body as JSON
+//       }
+//       // Here, 'data' contains the parsed response data
+//     )
+//     .then((data) => {
+//       console.log(data);
+//     });
+// });
+
+btnupdatepost.addEventListener("click", function (getPostId) {
+  // console.log(getPostId);
+  // get the data from the form created in the dashboard.handlebars
+  const title = document.querySelector(".edit-title").value;
+  const post_text = document.querySelector(".edit-body").value;
+
+  // send the data to the database using fetch
+  fetch(`/api/dashboard/${getPostId}`, {
+    method: "PUT",
+    body: JSON.stringify({
+      // title and post_text are the variables from the web page handlebars
+      title,
+      post_text,
+    }),
+    headers: { "Content-Type": "application/json" },
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not OK");
+      }
+      // go back to the dashboard page
+      window.location.replace("/dashboard");
+      return response.json(); // Parse the response body as JSON
+    })
+    // Here, 'data' contains the parsed response data
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});

@@ -1,10 +1,12 @@
 const btnnewpost = document.querySelector("#btn-new-post");
 const createnewpost = document.querySelector("#create-new-post");
 const btnsubmitpost = document.querySelector("#btn-add-new-post");
-const btneditpost = document.querySelector("#btn-edit-post");
+const btneditpost = document.querySelectorAll("#btn-edit-post");
 const btndeletepost = document.querySelector("#btn-delete-post");
-const postbox = document.querySelectorAll(".posts-box");
-
+const btnupdatepost = document.querySelector("#btn-update-post");
+const updatepostForm = document.querySelector("#update");
+const postsBoxes = document.querySelectorAll(".posts-box");
+const editField = document.querySelector("#edit");
 // when user click to create new post the form will show up
 btnnewpost.addEventListener("click", function () {
   createnewpost.style.display = "flex";
@@ -44,43 +46,38 @@ btnsubmitpost.addEventListener("click", function () {
     });
 });
 
-// postbox.forEach((editpost) => {
-//   editpost.addEventListener("click", function (e) {
-//     // show and hide the buttons
-//     btnnewpost.style.display = "none";
+btneditpost.forEach((edit) => {
+  edit.addEventListener("click", function (e) {
+    const id = e.target.dataset.id;
+    // show the form to edit the post
+    updatepostForm.style.display = "flex";
+    editField.value = id;
+    // postsBoxes.forEach((post) => {
+    //   //split the post id information to get the id number
+    //   getPostId = post.id.split("-")[1];
+    //   console.log(getPostId);
+    // });
+  });
+});
 
-//     //split the post id information to get the id number
-//     // getPostId = editpost.id.split("-")[1];
-//     // console.log(getPostId);
-//   });
-// });
-
-// add event listener to the add edit button
-btneditpost.addEventListener("click", function (e) {
-  // get the comment text from the comment box
-  // let editPostTitle = document.querySelector(".posts-title").value;
-  // let editPostText = document.querySelector(".posts-text").value;
-
-  // send the post id and comment text to the server
-  fetch(`/api/dashboard/:${getPostId}`, {
+// when user click to update the post the data will be sent to the database
+btnupdatepost.addEventListener("click", async function (e) {
+  // get the data from the form created in the dashboard.handlebars
+  const title = document.querySelector(".edit-title").value;
+  const post_text = document.querySelector(".edit-body").value;
+  const id = editField.value;
+  console.log(title, post_text, id);
+  // send the data to the database using fetch
+  const result = await fetch("/api/dashboard/", {
     method: "PUT",
     body: JSON.stringify({
-      post_id: parseInt(getPostId),
-      title: editPostTitle,
-      post_text: editPostText,
+      // title and post_text are the variables from the web page handlebars
+      id,
+      title,
+      post_text,
     }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not OK");
-      }
-      return response.json(); // Parse the response body as JSON
-    })
-    // Here, 'data' contains the parsed response data
-    .then((data) => {
-      console.log(data);
-    });
+    headers: { "Content-Type": "application/json" },
+  });
+  window.location.replace("/dashboard");
+  return result.json();
 });

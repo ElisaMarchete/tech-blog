@@ -48,8 +48,7 @@ router.get("/", async (req, res) => {
 });
 
 // Update a post when the user clicks on the edit button
-// http://localhost:3001/api/dashboard/:id
-router.put("/:id", async (req, res) => {
+router.put("/", async (req, res) => {
   try {
     const updatePost = await Posts.update(
       {
@@ -58,16 +57,17 @@ router.put("/:id", async (req, res) => {
       },
       {
         where: {
-          id: req.params.id,
+          id: req.body.id,
         },
       }
     );
-
     res.status(200).json(updatePost);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
+
+// Delete a post when the user clicks on the delete button
 
 module.exports = router;

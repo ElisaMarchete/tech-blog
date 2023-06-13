@@ -70,14 +70,15 @@
 
 {{/if}}
 
-<!-- only loged users can update posts style="display: none;"-->
+<!-- only loged users can update posts -->
 {{#if loggedIn}}
-  <section class="comment-box" id="update-box" style="display: none;">
-    <div class="update">
-      <textarea class="text-box" placeholder={{userposts.title}}></textarea>
-      <textarea class="text-box" placeholder={{userposts.post_text}}></textarea>
-    </div>
-    <div class="btn-comment">
+  {{!-- <section class="comment-box" id="update-box"> --}}
+    <div class="update" id="update" style="display: none;">
+      <textarea class="edit-title" placeholder=></textarea>
+      <textarea class="edit-body" placeholder=></textarea>
+      <input type="text" id="edit" style="display: none;">
+    
+     <div class="btn-comment">
       <button
         class="btn btn-primary"
         id="btn-update-post"
@@ -85,6 +86,7 @@
         name="button"
       >Update</button>
     </div>
+  </div>
   </section>
 
 {{/if}}
