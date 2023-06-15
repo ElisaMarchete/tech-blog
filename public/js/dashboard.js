@@ -7,13 +7,14 @@ const btnupdatepost = document.querySelector("#btn-update-post");
 const updatepostForm = document.querySelector("#update");
 const postsBoxes = document.querySelectorAll(".posts-box");
 const editField = document.querySelector("#edit");
-// when user click to create new post the form will show up
+
+// CREATE NEW POST
 btnnewpost.addEventListener("click", function () {
   createnewpost.style.display = "flex";
   btnnewpost.style.display = "none";
 });
 
-// when user click to submit the new post the data will be sent to the database
+// SUBMIT NEW POST
 btnsubmitpost.addEventListener("click", function () {
   // get the data from the form created in the dashboard.handlebars
   const title = document.querySelector("#posts-new-title").value;
@@ -46,6 +47,7 @@ btnsubmitpost.addEventListener("click", function () {
     });
 });
 
+// UPDATE POST
 btneditpost.forEach((edit) => {
   edit.addEventListener("click", function (e) {
     const id = e.target.dataset.id;
@@ -65,7 +67,7 @@ btneditpost.forEach((edit) => {
   });
 });
 
-// when user click to update the post the data will be sent to the database
+// SUBMITE UPDATED POST
 btnupdatepost.addEventListener("click", async function (e) {
   // get the data from the form created in the dashboard.handlebars
   const title = document.querySelector(".edit-title").value;
@@ -81,6 +83,23 @@ btnupdatepost.addEventListener("click", async function (e) {
       id,
       title,
       post_text,
+    }),
+    headers: { "Content-Type": "application/json" },
+  });
+  window.location.replace("/dashboard");
+  return result.json();
+});
+
+// DELETE POST
+btndeletepost.addEventListener("click", async function (e) {
+  const id = e.target.dataset.id;
+  console.log(id);
+  // send the data to the database using fetch
+  const result = await fetch("/api/dashboard/", {
+    method: "DELETE",
+    body: JSON.stringify({
+      // title and post_text are the variables from the web page handlebars
+      id,
     }),
     headers: { "Content-Type": "application/json" },
   });

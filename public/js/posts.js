@@ -3,6 +3,7 @@ const postsBoxes = document.querySelectorAll(".posts-box");
 const btnAddComment = document.querySelector("#btn-add-comment");
 const displayComment = document.querySelector(".display-comment");
 
+// ADD COMMENT
 postsBoxes.forEach((post) => {
   post.addEventListener("click", function (e) {
     // display the comment box when the post is clicked
@@ -24,7 +25,7 @@ postsBoxes.forEach((post) => {
   });
 });
 
-// add event listener to the add comment button
+// ADD COMMENT - Fetch API
 btnAddComment.addEventListener("click", function (e) {
   // get the post id from the comment box
   const postId = commentBox.getAttribute("comment-post-id");

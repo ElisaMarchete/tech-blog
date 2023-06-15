@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Comments } = require("../../models");
+const { Comments, User } = require("../../models");
 
 // CREATE new comment
 // http://localhost:3001/api/comments

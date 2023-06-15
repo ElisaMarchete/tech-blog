@@ -2,7 +2,7 @@ const router = require("express").Router();
 const withAuth = require("../utils/auth");
 const { Posts, User } = require("../models");
 
-// http://localhost:3001/
+// GET ALL POSTS -> http://localhost:3001/
 router.get("/", async (req, res) => {
   try {
     const postData = await Posts.findAll({
@@ -22,8 +22,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// http://localhost:3001/login
-// Login route
+// LOGIN route ->http://localhost:3001/login
 router.get("/login", (req, res) => {
   // If the user is already logged in, redirect to the homepage
   if (req.session.loggedIn) {
@@ -34,7 +33,7 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-// http://localhost:3001/signup
+// SIGNUP -> http://localhost:3001/signup
 router.get("/signup", (req, res) => {
   // If the user is already logged in, redirect to the homepage
   if (req.session.loggedIn) {
@@ -45,7 +44,7 @@ router.get("/signup", (req, res) => {
   res.render("signup");
 });
 
-// http://localhost:3001/api/dashboard
+// DASHBOARD -> http://localhost:3001/api/dashboard
 router.get("/dashboard", withAuth, async (req, res) => {
   try {
     const userId = req.session.user_id;
