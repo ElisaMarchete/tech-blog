@@ -1,5 +1,4 @@
-<!-- Loop over each post object -->
-{{!-- allPosts from homeRoutes.Js get("/") --}}
+<!-- Loop over each post -> allPosts from homeRoutes.Js get("/") -->
 {{#each allPosts as |posts|}}
   <section class="posts-box" id="posts-{{posts.id}}">
     <section class="posts-header">
@@ -13,9 +12,9 @@
   </section>
 {{/each}}
 
-<!-- only loged users can add comments -->
+<!-- DISPLAY COMMENT --> 
 {{#if loggedIn}}
-  <section class="comment-box" id="comment-box" style="display: none;">
+  <section class="comment-box" id="comments-{{posts.id}}" style="display: none;">
     <div class="comment">
       <textarea class="text-box" placeholder="Add your comment"></textarea>
     </div>
@@ -33,4 +32,8 @@
     </section>
 {{/if}}
 
-<script src="./js/posts.js"></script>
+{{!-- Display comment --}}
+
+
+
+<script src="./js/homepage.js"></script>

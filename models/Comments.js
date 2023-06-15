@@ -11,10 +11,10 @@ Comments.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+    // name: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    // },
     comment_date: {
       type: DataTypes.DATE,
       allowNull: false,
@@ -23,6 +23,13 @@ Comments.init(
     comment_text: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    user_posts_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "user",
+        key: "id",
+      },
     },
     comments_posts_id: {
       type: DataTypes.INTEGER,

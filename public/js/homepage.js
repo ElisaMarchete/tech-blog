@@ -1,4 +1,4 @@
-const commentBox = document.querySelector("#comment-box");
+const commentBox = document.querySelector(".comment-box");
 const postsBoxes = document.querySelectorAll(".posts-box");
 const btnAddComment = document.querySelector("#btn-add-comment");
 const displayComment = document.querySelector(".display-comment");
@@ -56,18 +56,18 @@ btnAddComment.addEventListener("click", function (e) {
       // hide the comment box to display only the new comment
       commentBox.style = "display: none";
 
-      // display the author name and comment text and date
+      // DISPLAY COMMENT CONTENT
       displayComment.innerHTML = `
       <div class="newCommentDisplay">
-            <div class="comment-text">
-            <p>${data.comment_text}</p>
-           </div>
-            <div class="comment-author-date">
-            <p>--- ${data.name}  ${data.comment_date}</p>
-            </div>
-         </div>
+      <div class="comment-text">
+        <p>${data.dbUserData.comment_text}</p>
       </div>
+      <div class="comment-author-date">
+        <div class="comment-author">
+          <p>--- ${data.dbUser.username}  ${data.dbUserData.comment_date}</p>
+        </div>
       </div>
-      `;
+    </div>
+  `;
     });
 });
