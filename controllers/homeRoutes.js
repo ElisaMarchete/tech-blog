@@ -13,9 +13,11 @@ router.get("/", async (req, res) => {
     // console.log(postData);
     const allPosts = postData.map((post) => post.get({ plain: true }));
     //post.get({ plain: true }) will contain plain JavaScript objects representing each post, instead of Sequelize model instances.
-    // console.log({ allPosts });
 
-    res.render("homepage", { allPosts, loggedIn: req.session.loggedIn }); // loggedIn will be used to determine whether or not to display the login/logout links in the header
+    res.render("homepage", {
+      allPosts,
+      loggedIn: req.session.loggedIn,
+    }); // loggedIn will be used to determine whether or not to display the login/logout links in the header
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

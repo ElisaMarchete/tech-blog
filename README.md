@@ -8,7 +8,7 @@ This is a CMS-style blog site similar to a Wordpress site, where developers can 
 
 ## Usage
 
-- Navigate to the [Tech Blog](https://tecXXXXXXXXXXXXXXXXXXXXX) site.
+- Navigate to the [Tech Blog](https://lit-gorge-39686-8c8602a21f73.herokuapp.com/) site.
 - Click on the `Login` link in the navigation bar.
 - If you have an account, enter your credentials and click on the `Login` button.
 - If you don't have an account, click on the `Sign Up` link and enter your credentials to create an account.
@@ -29,4 +29,4 @@ This project is licensed under the MIT license.
 ![Screenshot of deployed application](./screenshot/localhost_3001_5.png)
 ![Screenshot of deployed application](./screenshot/localhost_3001_6.png)
 
-[Link deployed application](https)
+[Link deployed application](https://lit-gorge-39686-8c8602a21f73.herokuapp.com/)
