@@ -24,7 +24,6 @@ This project is licensed under the MIT license.
 
 ![Screenshot of deployed application](./screenshot/localhost_3001_1.png)
 ![Screenshot of deployed application](./screenshot/localhost_3001_2.png)
-![Screenshot of deployed application](./screenshot/localhost_3001_3.png)
 ![Screenshot of deployed application](./screenshot/localhost_3001_4.png)
 ![Screenshot of deployed application](./screenshot/localhost_3001_5.png)
 ![Screenshot of deployed application](./screenshot/localhost_3001_6.png)
