@@ -29,6 +29,7 @@ postsBoxes.forEach((post) => {
 btnAddComment.addEventListener("click", function (e) {
   // get the post id from the comment box
   const postId = commentBox.getAttribute("comment-post-id");
+  console.log(postId);
 
   // get the comment text from the comment box
   let commentText = document.querySelector(".text-box").value;

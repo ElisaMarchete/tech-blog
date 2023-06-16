@@ -20,7 +20,7 @@ router.post("/", async (req, res) => {
 });
 
 // UPDATE POST -> http://localhost:3001/api/dashboard
-router.put("/", async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
     const updatePost = await Posts.update(
       {
@@ -29,7 +29,7 @@ router.put("/", async (req, res) => {
       },
       {
         where: {
-          id: req.body.id,
+          id: req.params.id,
         },
       }
     );
@@ -41,11 +41,11 @@ router.put("/", async (req, res) => {
 });
 
 // DELETE POST -> http://localhost:3001/api/dashboard
-router.delete("/", async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const deletePost = await Posts.destroy({
       where: {
-        id: req.body.id,
+        id: req.params.id,
       },
     });
     res.status(200).json(deletePost);

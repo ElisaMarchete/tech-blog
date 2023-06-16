@@ -21,7 +21,7 @@ btnsubmitpost.addEventListener("click", function () {
   const post_text = document.querySelector("#new-body").value;
 
   // send the data to the database using fetch
-  fetch("/api/dashboard", {
+  fetch("/api/dashboard/", {
     method: "POST",
     body: JSON.stringify({
       // title and post_text are the variables from the web page handlebars
@@ -76,7 +76,7 @@ btnupdatepost.addEventListener("click", async function (e) {
   console.log(title, post_text, id);
 
   // send the data to the database using fetch
-  const result = await fetch("/api/dashboard/", {
+  const result = await fetch(`/api/dashboard/${id}`, {
     method: "PUT",
     body: JSON.stringify({
       // title and post_text are the variables from the web page handlebars
@@ -93,9 +93,10 @@ btnupdatepost.addEventListener("click", async function (e) {
 // DELETE POST
 btndeletepost.addEventListener("click", async function (e) {
   const id = e.target.dataset.id;
+
   console.log(id);
   // send the data to the database using fetch
-  const result = await fetch("/api/dashboard/", {
+  const result = await fetch(`/api/dashboard/${id}`, {
     method: "DELETE",
     body: JSON.stringify({
       // title and post_text are the variables from the web page handlebars
